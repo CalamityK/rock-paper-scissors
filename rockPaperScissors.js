@@ -23,35 +23,66 @@ function getPlayerChoice() {
     //return lowercase string
 }
 
-function playGame() {
+function playRound() {
     //run getPlayerChoice()
     let playerSelection = getPlayerChoice()
     //check player choice is valid answer
-    if(playerSelection !== "rock" || "paper" || "scissors") {
+    /*if(playerSelection !== "rock" || "paper" || "scissors") {
         return alert("I'm sorry that is not a valid answer, please try again");
-    }
+    }*/
     //if no, run getPlayerChoice() again
     //run getComputerChoice()
     let computerSelection = getComputerChoice()
     //compare answers
     if(playerSelection === "rock" && computerSelection === "rock") {
-        return "Rock ties against Rock!"
+        return console.log("Rock ties against Rock!")
     } else if(playerSelection === "rock" && computerSelection === "paper") {
-        return "Rock loses to Paper! You Lose!"
+        console.log("Rock loses to Paper! You Lose!")
+        return compScore++
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
-        return "Rock beats Scissors! You Win!"
+        console.log("Rock beats Scissors! You Win!")
+        return playerScore++
     } else if(playerSelection === "paper" && computerSelection === "rock") {
-        return "Paper beats Rock! You Win!"
+        console.log("Paper beats Rock! You Win!")
+        return playerScore++
     } else if(playerSelection === "paper" && computerSelection === "paper") {
-        return "Paper ties against Paper"
+        return console.log("Paper ties against Paper")
     } else if(playerSelection === "paper" && computerSelection === "scissors") {
-        return "Paper loses to Scissors! You Lose!"
+        console.log("Paper loses to Scissors! You Lose!")
+        return compScore++
     } else if(playerSelection === "scissors" && computerSelection === "rock") {
-        return "Scissors loses to Rock! You Lose!"
+        console.log("Scissors loses to Rock! You Lose!")
+        return compScore++
     } else if(playerSelection === "scissors" && computerSelection === "paper") {
-        return "Scissors beats Paper! You Win!"
+        console.log("Scissors beats Paper! You Win!")
+        return playerScore++
     } else if(playerSelection === "scissors" && computerSelection === "scissors") {
-        return "Scissors ties against Scissors!"
+        return console.log("Scissors ties against Scissors!")
     }
     //return winner
+}
+let compScore = 0
+let playerScore = 0
+
+function game() {
+    //set comp and player scores to 0
+    compScore = 0
+    playerScore = 0
+    //run playRound 5 times
+    for (let i = 0; i < 5; i++) {
+        playRound()
+        if (compScore === 3 || playerScore === 3) {
+            i = 5
+            if (playerScore > compScore) {
+                console.log("You Win the game!")
+            } else if (compScore > playerScore) {
+                console.log("You Lose the game!")
+            } else {
+                console.log("It's a Tie!")
+            }
+        }
+        //check who the winner is
+        //add 1 to their score
+        //if either score reachs 3 exit loop and return winner
+    }
 }
