@@ -15,22 +15,16 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    //prompt player to pick between rock paper or scissors
-    let answer = prompt("Would you like to pick rock, paper or scissors?")
-    //turn string into an all lower case version
-    return answer.toLowerCase()
-    //return lowercase string
-}
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => playRound("rock"));
 
-function playRound() {
-    //run getPlayerChoice()
-    let playerSelection = getPlayerChoice()
-    //check player choice is valid answer
-    /*if(playerSelection !== "rock" || "paper" || "scissors") {
-        return alert("I'm sorry that is not a valid answer, please try again");
-    }*/
-    //if no, run getPlayerChoice() again
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => playRound("paper"));
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => playRound("scissors"));
+
+function playRound(playerSelection) {
     //run getComputerChoice()
     let computerSelection = getComputerChoice()
     //compare answers
@@ -64,7 +58,7 @@ function playRound() {
 let compScore = 0
 let playerScore = 0
 
-function game() {
+/* function game() {
     //set comp and player scores to 0
     compScore = 0
     playerScore = 0
@@ -85,4 +79,4 @@ function game() {
         //add 1 to their score
         //if either score reachs 3 exit loop and return winner
     }
-}
+} */
